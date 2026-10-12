@@ -1,2 +1,0 @@
-# Portorizki
-Portofolio Rizki

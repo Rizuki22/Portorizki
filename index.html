@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rizki Nuraini | Tech Portfolio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Typed.js -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts: JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        tech: {
+                            bg: '#050505',
+                            card: '#0a0a0a',
+                            border: '#1f1f1f',
+                            cyan: '#00f0ff',
+                            green: '#00ff66',
+                            text: '#a1a1aa'
+                        }
+                    },
+                    animation: {
+                        'spin-slow': 'spin 12s linear infinite',
+                        'spin-reverse': 'spin 10s linear infinite reverse',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #050505;
+            color: #e4e4e7;
+            overflow-x: hidden;
+        }
+
+        .tech-card {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid #1f1f1f;
+            transition: all 0.3s ease;
+        }
+        .tech-card:hover {
+            border-color: #00f0ff;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+        }
+
+        .tech-nav {
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid #1f1f1f;
+        }
+
+        .text-glow-cyan {
+            color: #00f0ff;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+
+        .floating-code-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -10;
+            pointer-events: none;
+        }
+
+        .code-word {
+            position: absolute;
+            bottom: -50px;
+            color: rgba(0, 240, 255, 0.05);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            white-space: nowrap;
+            user-select: none;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(5deg); opacity: 0; }
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #1f1f1f; }
+        ::-webkit-scrollbar-thumb:hover { background: #00f0ff; }
+    </style>
+</head>
+<body class="antialiased selection:bg-tech-cyan selection:text-black">
+
+    <div class="floating-code-container" id="code-bg"></div>
+
+    <nav class="fixed w-full top-0 z-50 tech-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="text-xl font-bold font-mono text-white flex items-center gap-2">
+                    &lt;Rizki/&gt;
+                </a>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-sm font-mono text-tech-text hover:text-tech-cyan transition-colors">~/home</a>
+                    <a href="#about" class="text-sm font-mono text-tech-text hover:text-tech-cyan transition-colors">~/about</a>
+                    <a href="#portfolio" class="text-sm font-mono text-tech-text hover:text-tech-cyan transition-colors">~/portfolio</a>
+                    <a href="#resume" class="text-sm font-mono text-tech-text hover:text-tech-cyan transition-colors">~/resume</a>
+                    <a href="#certs" class="text-sm font-mono text-tech-text hover:text-tech-cyan transition-colors">~/certs</a>
+                </div>
+
+                <div class="hidden md:block">
+                    <a href="#contact" class="px-5 py-2 border border-tech-cyan text-tech-cyan font-mono text-sm hover:bg-tech-cyan hover:text-black transition-all">
+                        init_contact()
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="relative min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full grid md:grid-cols-2 gap-12 items-center">
+            
+            <div class="order-2 md:order-1" data-aos="fade-right" data-aos-duration="1000">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-tech-card border border-tech-border text-xs font-mono text-tech-green mb-6">
+                    <span class="w-2 h-2 bg-tech-green animate-pulse"></span>
+                    SYSTEM.STATUS == "Open To Work" | Fresh Graduate
+                </div>
+                
+                <h1 class="text-5xl lg:text-7xl font-bold text-white leading-tight mb-4 tracking-tight">
+                    Rizki <br><span class="text-glow-cyan">Nuraini.</span>
+                </h1>
+                
+                <div class="h-8 md:h-10 mb-6 font-mono">
+                    <span class="text-tech-text">const role = </span>
+                    <span id="typed-text" class="text-tech-cyan font-bold"></span>
+                </div>
+                
+                <p class="text-tech-text text-lg max-w-lg mb-8 leading-relaxed">
+                    Lulusan D3 Komputerisasi Akuntansi. Menggabungkan keahlian sistem pelaporan keuangan dengan implementasi teknologi informasi, web development, dan infrastruktur jaringan.
+                </p>
+                
+                <div class="flex gap-4">
+                    <a href="https://www.linkedin.com/in/rizki-nuraini-97b1512a6" target="_blank" rel="noopener noreferrer" class="px-8 py-3 bg-tech-cyan text-black font-bold hover:bg-cyan-300 transition-colors font-mono flex items-center gap-2">
+                        <i class="fab fa-linkedin text-xl"></i> LinkedIn()
+                    </a>
+                </div>
+            </div>
+
+            <div class="order-1 md:order-2 flex justify-center items-center" data-aos="fade-left" data-aos-duration="1000">
+                <div class="relative w-72 h-72 md:w-96 md:h-96 flex justify-center items-center">
+                    <div class="absolute inset-0 rounded-full border border-tech-border animate-spin-slow">
+                        <div class="absolute top-0 left-1/2 w-3 h-3 bg-tech-cyan rounded-full -translate-x-1/2 -translate-y-1/2 shadow-[0_0_10px_#00f0ff]"></div>
+                    </div>
+                    <div class="absolute inset-6 rounded-full border border-tech-border border-dashed animate-spin-reverse">
+                        <div class="absolute bottom-0 right-1/4 w-2 h-2 bg-tech-green rounded-full translate-x-1/2 translate-y-1/2 shadow-[0_0_10px_#00ff66]"></div>
+                    </div>
+                    
+                    <div class="absolute inset-10 rounded-full overflow-hidden border-2 border-tech-cyan/50 z-10">
+                        <img src="diri.jpeg" alt="Rizki Nuraini" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" onerror="this.src='https://placehold.co/400x400/0a0a0a/00f0ff?text=RN'">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="about" class="py-24 relative z-10 border-t border-tech-border">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="mb-12" data-aos="fade-up">
+                <span class="font-mono text-tech-cyan text-sm block mb-2">// 01. Profil</span>
+                <h2 class="text-4xl font-bold text-white">Whois <span class="text-glow-cyan">Rizki?</span></h2>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-stretch">
+                <!-- Teks About -->
+                <div class="tech-card rounded-xl p-8 h-full flex flex-col justify-center" data-aos="fade-right">
+                    <div class="flex items-center gap-3 mb-6 border-b border-tech-border pb-4">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span class="ml-2 font-mono text-xs text-tech-text">terminal - bash</span>
+                    </div>
+                    <p class="font-mono text-tech-text text-sm leading-relaxed mb-4">
+                        <span class="text-tech-green">guest@portfolio:~$</span> cat about.txt <br>
+                        Lulusan D3 Komputerisasi Akuntansi dari Universitas Komputer Indonesia dengan IPK 3.92/4.00. Antusias di bidang Sistem Akuntansi, Jaringan, serta Pengembangan Web.<br><br>
+                        Individu berdedikasi, cepat beradaptasi, dan berkomitmen untuk terus berkembang dalam mengintegrasikan sistem pelaporan dengan efisiensi IT.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mt-auto pt-4">
+                        <span class="border border-tech-border px-4 py-2 text-xs font-mono text-tech-text"><i class="fas fa-map-marker-alt text-tech-cyan mr-2"></i>Jalan Cilengkrang 1, Bandung</span>
+                        <span class="border border-tech-border px-4 py-2 text-xs font-mono text-tech-text"><i class="fas fa-envelope text-tech-cyan mr-2"></i>rizkinuraini158@gmail.com</span>
+                    </div>
+                </div>
+
+                <!-- 4 Kategori Keahlian -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 h-full" data-aos="fade-left">
+                    <div class="tech-card p-6 rounded-xl border-t-2 border-t-tech-cyan flex flex-col justify-center h-full">
+                        <i class="fas fa-code text-2xl text-tech-cyan mb-3"></i>
+                        <h4 class="text-white font-bold mb-1">Web Developer</h4>
+                        <p class="text-xs text-tech-text">Membangun aplikasi web dan integrasi database (CodeIgniter & MySQL).</p>
+                    </div>
+                    
+                    <div class="tech-card p-6 rounded-xl border-t-2 border-t-yellow-400 flex flex-col justify-center h-full">
+                        <i class="fas fa-calculator text-2xl text-yellow-400 mb-3"></i>
+                        <h4 class="text-white font-bold mb-1">Accounting System</h4>
+                        <p class="text-xs text-tech-text">Perancangan sistem informasi pelaporan dan pencatatan keuangan bisnis.</p>
+                    </div>
+
+                    <div class="tech-card p-6 rounded-xl border-t-2 border-t-tech-green flex flex-col justify-center h-full">
+                        <i class="fas fa-network-wired text-2xl text-tech-green mb-3"></i>
+                        <h4 class="text-white font-bold mb-1">Network Engineer</h4>
+                        <p class="text-xs text-tech-text">Konfigurasi infrastruktur jaringan, routing, dan switching (Sertifikasi CCNA).</p>
+                    </div>
+
+                    <div class="tech-card p-6 rounded-xl border-t-2 border-t-purple-500 flex flex-col justify-center h-full">
+                        <i class="fas fa-file-invoice-dollar text-2xl text-purple-500 mb-3"></i>
+                        <h4 class="text-white font-bold mb-1">Accounting App</h4>
+                        <p class="text-xs text-tech-text">Penggunaan software akuntansi seperti MYOB untuk pengolahan data terkomputerisasi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-24 relative z-10 border-t border-tech-border bg-[#030303]">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6" data-aos="fade-up">
+                <div>
+                    <span class="font-mono text-tech-cyan text-sm block mb-2">// 02. Eksekusi</span>
+                    <h2 class="text-4xl font-bold text-white">Project <span class="text-glow-cyan">Repository</span></h2>
+                </div>
+                <div class="flex flex-wrap gap-2 font-mono text-sm" id="filter-buttons">
+                    <button class="filter-btn px-4 py-2 bg-tech-cyan text-black font-bold transition-all" data-filter="all">ALL</button>
+                    <button class="filter-btn px-4 py-2 tech-card text-tech-text hover:text-tech-cyan transition-all" data-filter="web">WEB</button>
+                    <button class="filter-btn px-4 py-2 tech-card text-tech-text hover:text-tech-cyan transition-all" data-filter="innovation">INNOVATION</button>
+                    <button class="filter-btn px-4 py-2 tech-card text-tech-text hover:text-tech-cyan transition-all" data-filter="publication">PUBLICATION</button>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="project-container">
+                
+                <!-- WEB 1: Tugas Akhir -->
+                <div class="project-item tech-card flex flex-col overflow-hidden group" data-category="web" data-aos="fade-up">
+                    <div class="h-48 bg-tech-bg relative overflow-hidden border-b border-tech-border">
+                        <div class="absolute top-3 left-3 bg-yellow-500 text-black text-xs font-bold px-2 py-1 z-10 font-mono">WEB / TA</div>
+                        <img src="dahsborad.png" alt="Dashboard" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-white mb-2">Aplikasi Akuntansi Maju Jaya</h3>
+                        <p class="text-tech-text text-sm mb-4 line-clamp-2">Perancangan Sistem Informasi Akuntansi Laporan Keuangan Laba Rugi pada Depot Es Kristal Maju Jaya.</p>
+                        <div class="flex flex-wrap gap-2 font-mono mt-auto">
+                            <span class="text-[10px] bg-tech-bg border border-tech-border text-tech-cyan px-2 py-1">CODEIGNITER 4</span>
+                            <span class="text-[10px] bg-tech-bg border border-tech-border text-tech-cyan px-2 py-1">MYSQL</span>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-tech-border">
+                            <a href="#" class="text-tech-cyan text-xs font-mono hover:underline flex items-center gap-1"><i class="fas fa-external-link-alt"></i> Lihat Detail -></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WEB 2: SeniKA -->
+                <div class="project-item tech-card flex flex-col overflow-hidden group" data-category="web" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 bg-tech-bg relative overflow-hidden border-b border-tech-border">
+                        <div class="absolute top-3 left-3 bg-tech-cyan text-black text-xs font-bold px-2 py-1 z-10 font-mono">WEB</div>
+                        <!-- Ganti src di bawah ini dengan gambar aplikasi SeniKA Anda -->
+                        <img src="show.jpg" alt="SeniKA App" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-white mb-2">Aplikasi SeniKA</h3>
+                        <p class="text-tech-text text-sm mb-4 line-clamp-2">Pengembangan aplikasi pendukung berbasis Expo Go dan integrasi dengan command terminal.</p>
+                        <div class="flex flex-wrap gap-2 font-mono mt-auto">
+                            <span class="text-[10px] bg-tech-bg border border-tech-border text-tech-cyan px-2 py-1">EXPO GO</span>
+                            <span class="text-[10px] bg-tech-bg border border-tech-border text-tech-cyan px-2 py-1">TERMINAL</span>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-tech-border">
+                            <a href="#" target="_blank" class="text-tech-cyan text-xs font-mono hover:underline flex items-center gap-1"><i class="fas fa-external-link-alt"></i> Lihat Detail -></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WEB 3: SIA Khamsah Khalifah -->
+                <div class="project-item tech-card flex flex-col overflow-hidden group" data-category="web" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 bg-tech-bg relative overflow-hidden border-b border-tech-border">
+                        <div class="absolute top-3 left-3 bg-tech-cyan text-black text-xs font-bold px-2 py-1 z-10 font-mono">WEB</div>
+                        <img src="login.png" alt="Khamsah Khalifah" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-white mb-2">SIA Khamsah Khalifah</h3>
+                        <p class="text-tech-text text-sm mb-4 line-clamp-2">Pembuatan Sistem Informasi Akuntansi Laporan Posisi Keuangan untuk manajemen keuangan yang presisi.</p>
+                        <div class="flex flex-wrap gap-2 font-mono mt-auto">
+                            <span class="text-[10px] bg-tech-bg border border-tech-border text-tech-cyan px-2 py-1">PHP</span>
+                            <span class="text-[10px] bg-tech-bg border border-tech-border text-tech-cyan px-2 py-1">MYSQL</span>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-tech-border">
+                            <a href="#" class="text-tech-cyan text-xs font-mono hover:underline flex items-center gap-1"><i class="fas fa-external-link-alt"></i> Lihat Detail -></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WEB 4: SIA Kosmart -->
+                <div class="project-item tech-card flex flex-col overflow-hidden group" data-category="web" data-aos="fade-up">
+                    <div class="h-48 bg-tech-bg relative overflow-hidden border-b border-tech-border">
+                        <div class="absolute top-3 left-3 bg-tech-cyan text-black text-xs font-bold px-2 py-1 z-10 font-mono">WEB</div>
+                        <img src="Inventory Card.png" alt="Kosmart" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-white mb-2">SIA Persediaan Kosmart</h3>
+                        <p class="text-tech-text text-sm mb-4 line-clamp-2">Sistem Informasi Akuntansi Manajemen Persediaan pada Kosmart (Koperasi Smart Building UNIKOM).</p>
+                        <div class="flex flex-wrap gap-2 font-mono mt-auto">
+                            <span class="text-[10px] bg-tech-bg border border-tech-border text-tech-cyan px-2 py-1">WEB DEV</span>
+                            <span class="text-[10px] bg-tech-bg border border-tech-border text-tech-cyan px-2 py-1">INVENTORY</span>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-tech-border">
+                            <a href="#" class="text-tech-cyan text-xs font-mono hover:underline flex items-center gap-1"><i class="fas fa-external-link-alt"></i> Lihat Detail -></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INNOVATION 1: PKM AutoFish -->
+                <div class="project-item tech-card flex flex-col overflow-hidden group" data-category="innovation" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 bg-tech-bg relative overflow-hidden border-b border-tech-border">
+                        <div class="absolute top-3 left-3 bg-purple-500 text-white text-xs font-bold px-2 py-1 z-10 font-mono">INNOVATION / PKM</div>
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="AutoFish" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-white mb-2">AutoFish Berbasis Android</h3>
+                        <p class="text-tech-text text-sm mb-4">Proyek Inovasi (PKM): Pendeteksi pakan otomatis, kejernihan air, dan ketepatan panen Budidamber. Bertindak sebagai <strong>Ketua Tim</strong> pengelola laporan kemajuan, akhir, & medsos.</p>
+                        <div class="flex flex-wrap gap-2 font-mono mt-auto">
+                            <span class="text-[10px] bg-tech-bg border border-tech-border text-purple-400 px-2 py-1">PROJECT MANAGER</span>
+                            <span class="text-[10px] bg-tech-bg border border-tech-border text-purple-400 px-2 py-1">IOT & ANDROID</span>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-tech-border">
+                            <a href="#" class="text-tech-cyan text-xs font-mono hover:underline flex items-center gap-1"><i class="fas fa-external-link-alt"></i> Lihat Detail -></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PUBLICATION 1: SEMBADHA -->
+                <div class="project-item tech-card flex flex-col overflow-hidden group" data-category="publication" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 bg-tech-bg relative overflow-hidden border-b border-tech-border flex items-center justify-center p-6 text-center">
+                        <div class="absolute top-3 left-3 bg-tech-green text-black text-xs font-bold px-2 py-1 z-10 font-mono">PROSIDING</div>
+                        <i class="fas fa-file-alt text-6xl text-tech-green opacity-30 group-hover:opacity-80 transition-opacity duration-300"></i>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-white mb-2">Prosiding SEMBADHA</h3>
+                        <p class="text-tech-text text-sm mb-4 line-clamp-3">Peningkatan Kualitas Produk Dan Dampak Pencemaran Limbah Budidaya Ikan Pada Usaha Kecil Putra Putri Ikan Menggunakan Autofish Berbasis Android.</p>
+                        <div class="flex flex-wrap gap-2 font-mono mt-auto">
+                            <span class="text-[10px] bg-tech-bg border border-tech-border text-tech-green px-2 py-1">RESEARCH</span>
+                            <span class="text-[10px] bg-tech-bg border border-tech-border text-tech-green px-2 py-1">ACADEMIC</span>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-tech-border">
+                            <a href="#" class="text-tech-cyan text-xs font-mono hover:underline flex items-center gap-1"><i class="fas fa-book-open"></i> Baca Jurnal -></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PUBLICATION 2: INJURATECH -->
+                <div class="project-item tech-card flex flex-col overflow-hidden group" data-category="publication" data-aos="fade-up">
+                    <div class="h-48 bg-tech-bg relative overflow-hidden border-b border-tech-border flex items-center justify-center p-6 text-center">
+                        <div class="absolute top-3 left-3 bg-tech-green text-black text-xs font-bold px-2 py-1 z-10 font-mono">SINTA 5</div>
+                        <i class="fas fa-scroll text-6xl text-tech-green opacity-30 group-hover:opacity-80 transition-opacity duration-300"></i>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-white mb-2">Jurnal INJURATECH</h3>
+                        <p class="text-tech-text text-sm mb-4 line-clamp-3">Designing An Accounting Information System For Financial Position Reports In A Garment Business Using Php And Mysql.</p>
+                        <div class="flex flex-wrap gap-2 font-mono mt-auto">
+                            <span class="text-[10px] bg-tech-bg border border-tech-border text-tech-green px-2 py-1">SINTA 5</span>
+                            <span class="text-[10px] bg-tech-bg border border-tech-border text-tech-green px-2 py-1">ACCOUNTING SYSTEM</span>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-tech-border">
+                            <a href="#" class="text-tech-cyan text-xs font-mono hover:underline flex items-center gap-1"><i class="fas fa-book-open"></i> Baca Jurnal -></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION RESUME -->
+    <section id="resume" class="py-24 relative z-10 border-t border-tech-border">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <span class="font-mono text-tech-cyan text-sm block mb-2" data-aos="fade-right">// 03. Log Sistem</span>
+            
+            <div class="grid lg:grid-cols-4 gap-8 mt-8">
+                <!-- Sidebar -->
+                <div class="lg:col-span-1 space-y-6" data-aos="fade-right">
+                    <div class="tech-card p-6">
+                        <h3 class="text-xs font-mono text-tech-cyan mb-4 border-b border-tech-border pb-2">TECH_STACK</h3>
+                        <div class="flex flex-wrap gap-2 font-mono">
+                            <span class="px-2 py-1 bg-tech-bg border border-tech-border text-xs text-tech-text">CODEIGNITER 4</span>
+                            <span class="px-2 py-1 bg-tech-bg border border-tech-border text-xs text-tech-text">PHP</span>
+                            <span class="px-2 py-1 bg-tech-bg border border-tech-border text-xs text-tech-text">MYSQL</span>
+                            <span class="px-2 py-1 bg-tech-bg border border-tech-border text-xs text-tech-text">CCNA</span>
+                            <span class="px-2 py-1 bg-tech-bg border border-tech-border text-xs text-tech-text">MYOB</span>
+                            <span class="px-2 py-1 bg-tech-bg border border-tech-border text-xs text-tech-text">EXPO GO</span>
+                            <span class="px-2 py-1 bg-tech-bg border border-tech-border text-xs text-tech-text">HTML/CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Container -->
+                <div class="lg:col-span-3 tech-card p-8" data-aos="fade-left">
+                    
+                    <!-- 1. PENGALAMAN KERJA -->
+                    <h3 class="text-2xl font-bold text-white mb-8 border-b border-tech-border pb-4">Pengalaman Kerja</h3>
+                    
+                    <div class="relative border-l border-tech-border ml-3 space-y-10 mb-12">
+                        <div class="relative pl-8">
+                            <div class="absolute -left-[5px] top-1.5 w-2 h-2 bg-tech-cyan shadow-[0_0_8px_#00f0ff]"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
+                                <h4 class="text-lg font-bold text-white">Kerja Praktik / Bagian Arsip</h4>
+                                <span class="bg-tech-cyan text-black font-mono text-xs px-2 py-1 mt-2 sm:mt-0">Sep 2024 — Oct 2024</span>
+                            </div>
+                            <p class="text-tech-text text-sm mb-3">Balai Geoteknik, Terowongan dan Struktur - Bandung</p>
+                            <ul class="space-y-1 text-tech-text text-sm font-mono leading-relaxed">
+                                <li>> Melakukan digitalisasi dokumen fisik melalui proses pemindaian (scanning) dan pengarsipan data ke media penyimpanan portabel secara presisi.</li>
+                                <li>> Mengelola dan mengorganisasikan database dokumen secara online menggunakan cloud storage (Google Drive).</li>
+                            </ul>
+                        </div>
+
+                        <div class="relative pl-8">
+                            <div class="absolute -left-[5px] top-1.5 w-2 h-2 bg-tech-border"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
+                                <h4 class="text-lg font-bold text-white">Kasir & Staf Operasional</h4>
+                                <span class="bg-tech-border text-tech-text font-mono text-xs px-2 py-1 mt-2 sm:mt-0">Jan 2020 — Sep 2023</span>
+                            </div>
+                            <p class="text-tech-text text-sm mb-3">Grosir Jaya - Bandung</p>
+                            <ul class="space-y-1 text-tech-text text-sm font-mono leading-relaxed">
+                                <li>> Mengelola kelancaran transaksi keuangan harian dan manajemen inventaris (stock opname).</li>
+                                <li>> Bertanggung jawab atas efisiensi alur logistik toko dan eksekusi bongkar muat barang supplier.</li>
+                            </ul>
+                        </div>
+
+                        <div class="relative pl-8">
+                            <div class="absolute -left-[5px] top-1.5 w-2 h-2 bg-tech-border"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
+                                <h4 class="text-lg font-bold text-white">Kerja Praktik / Teknisi Komputer</h4>
+                                <span class="bg-tech-border text-tech-text font-mono text-xs px-2 py-1 mt-2 sm:mt-0">Dec 2019 — Mar 2020</span>
+                            </div>
+                            <p class="text-tech-text text-sm mb-3">Badan Pengelolaan dan Aset Daerah (Gedung Sate) - Bandung</p>
+                            <ul class="space-y-1 text-tech-text text-sm font-mono leading-relaxed">
+                                <li>> Menangani perbaikan dan optimalisasi (troubleshooting) hardware.</li>
+                                <li>> Memastikan stabilitas konektivitas jaringan komputer kantor dengan melakukan instalasi kabel LAN.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 2. PENDIDIKAN -->
+                    <h3 class="text-2xl font-bold text-white mb-8 border-b border-tech-border pb-4 mt-8">Jenjang Pendidikan</h3>
+                    
+                    <div class="relative border-l border-tech-border ml-3 space-y-10 mb-12">
+                        <div class="relative pl-8">
+                            <div class="absolute -left-[5px] top-1.5 w-2 h-2 bg-tech-cyan shadow-[0_0_8px_#00f0ff]"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
+                                <h4 class="text-lg font-bold text-white">D3 Komputerisasi Akuntansi</h4>
+                                <span class="bg-tech-cyan text-black font-mono text-xs px-2 py-1 mt-2 sm:mt-0">Sep 2023 — Oct 2026 (Perk.)</span>
+                            </div>
+                            <p class="text-tech-text text-sm mb-3">Universitas Komputer Indonesia - Bandung</p>
+                            <ul class="space-y-1 text-tech-text text-sm font-mono leading-relaxed">
+                                <li>> IPK: 3.92/4.00</li>
+                                <li>> Tugas Akhir: "Perancangan Sistem Informasi Akuntansi Laporan Keuangan Laba Rugi Menggunakan CodeIgniter 4 dan MySQL pada Depot Es Kristal Maju Jaya".</li>
+                            </ul>
+                        </div>
+
+                        <div class="relative pl-8">
+                            <div class="absolute -left-[5px] top-1.5 w-2 h-2 bg-tech-border"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
+                                <h4 class="text-lg font-bold text-white">SMK — Teknik Komputer & Jaringan</h4>
+                                <span class="bg-tech-border text-tech-text font-mono text-xs px-2 py-1 mt-2 sm:mt-0">Jul 2018 — Jun 2021</span>
+                            </div>
+                            <p class="text-tech-text text-sm mb-3">SMK Muhammadiyah 2 Cibiru - Bandung</p>
+                            <ul class="space-y-1 text-tech-text text-sm font-mono leading-relaxed">
+                                <li>> Nilai: 87.00/100.00</li>
+                                <li>> Memperdalam kompetensi teknis jaringan komputer, routing, dan switching.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 3. PENGALAMAN ORGANISASI -->
+                    <h3 class="text-2xl font-bold text-white mb-8 border-b border-tech-border pb-4 mt-8">Pengalaman Organisasi</h3>
+                    
+                    <div class="relative border-l border-tech-border ml-3 space-y-10">
+                        <div class="relative pl-8">
+                            <div class="absolute -left-[5px] top-1.5 w-2 h-2 bg-tech-cyan shadow-[0_0_8px_#00f0ff]"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
+                                <h4 class="text-lg font-bold text-white">Divisi Pengembangan Potensi</h4>
+                                <span class="bg-tech-cyan text-black font-mono text-xs px-2 py-1 mt-2 sm:mt-0">Jan 2025 — Nov 2025</span>
+                            </div>
+                            <p class="text-tech-text text-sm mb-3">Himpunan Mahasiswa Komputerisasi Akuntansi</p>
+                            <ul class="space-y-1 text-tech-text text-sm font-mono leading-relaxed">
+                                <li>> Memimpin divisi untuk memfasilitasi pengembangan potensi teknis dan kepemimpinan.</li>
+                                <li>> Ketua Pelaksana Latihan Dasar Kepemimpinan (LDK) dan Company Visit (OJK).</li>
+                                <li>> Menginisiasi Workshop Pengembangan Web (Laravel 11) bersama alumni.</li>
+                            </ul>
+                        </div>
+
+                        <!-- TAMBAHAN: Divisi PDD -->
+                        <div class="relative pl-8">
+                            <div class="absolute -left-[5px] top-1.5 w-2 h-2 bg-tech-border"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
+                                <h4 class="text-lg font-bold text-white">Anggota Divisi PDD (Publikasi, Dekorasi, & Dokumentasi)</h4>
+                                <span class="bg-tech-border text-tech-text font-mono text-xs px-2 py-1 mt-2 sm:mt-0">Jan 2024 — Dec 2024</span>
+                            </div>
+                            <p class="text-tech-text text-sm mb-3">Kepanitiaan / Organisasi</p>
+                            <ul class="space-y-1 text-tech-text text-sm font-mono leading-relaxed">
+                                <li>> Mendokumentasikan kegiatan dan mengunggah aset visual (foto) ke media penyimpanan cloud.</li>
+                                <li>> Mengelola dan membagikan akses folder Google Drive kepada peserta dan anggota secara tertib.</li>
+                            </ul>
+                        </div>
+
+                        <div class="relative pl-8">
+                            <div class="absolute -left-[5px] top-1.5 w-2 h-2 bg-tech-border"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
+                                <h4 class="text-lg font-bold text-white">Anggota</h4>
+                                <span class="bg-tech-border text-tech-text font-mono text-xs px-2 py-1 mt-2 sm:mt-0">Jan 2019 — Dec 2019</span>
+                            </div>
+                            <p class="text-tech-text text-sm mb-3">Ikatan Pelajar Muhammadiyah</p>
+                            <ul class="space-y-1 text-tech-text text-sm font-mono leading-relaxed">
+                                <li>> Berpartisipasi aktif dalam merencanakan program kerja kepemudaan serta kegiatan sosial.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION CERTIFICATES (URUTAN DIPERBARUI) -->
+    <section id="certs" class="py-24 relative z-10 border-t border-tech-border bg-[#030303]">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <span class="font-mono text-tech-cyan text-sm block mb-2" data-aos="fade-up">// 04. Sertifikasi & Penghargaan</span>
+            <h2 class="text-4xl font-bold text-white mb-12" data-aos="fade-up">Certificates & <span class="text-glow-cyan">Awards</span></h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Cert 1: Ujian Jaringan UNIKOM (2026) -->
+                <div class="tech-card p-6 border-t-2 border-t-tech-cyan flex flex-col group" data-aos="fade-up">
+                    <p class="font-mono text-tech-text text-xs mb-2">2026</p>
+                    <h3 class="text-lg font-bold text-white mb-2">Jaringan Komputer (UNIKOM)</h3>
+                    <p class="text-tech-text text-sm mb-4 flex-grow">Sertifikasi kompetensi teknis meliputi praktik merakit komputer, instalasi OS Windows, pembuatan kabel LAN, dan troubleshooting PC.</p>
+                    <div class="mt-4 pt-4 border-t border-tech-border">
+                        <!-- Masukkan Link Sertifikat di href -->
+                        <a href="https://drive.google.com/file/d/1xLQ4q4LqTo7FylnsY0HdaLSTxf5-z9Ln/view?usp=drive_link" target="_blank" class="text-tech-cyan text-xs font-mono hover:underline flex items-center gap-1 group-hover:text-white transition-colors"><i class="fas fa-external-link-alt"></i> Lihat Sertifikat -></a>
+                    </div>
+                </div>
+
+                <!-- Cert 2: ISCEER / INJURATECH (2025) -->
+                <div class="tech-card p-6 border-t-2 border-t-red-500 flex flex-col group" data-aos="fade-up" data-aos-delay="100">
+                    <p class="font-mono text-tech-text text-xs mb-2">2025</p>
+                    <h3 class="text-lg font-bold text-white mb-2">Sertifikat ISCEER (INJURATECH)</h3>
+                    <p class="text-tech-text text-sm mb-4 flex-grow">Penghargaan untuk paper: "Designing An Accounting Information System For Financial Position Reports In A Garment Business Using Php And Mysql" (SINTA 5).</p>
+                    <div class="mt-4 pt-4 border-t border-tech-border">
+                        <a href="https://drive.google.com/file/d/1N3XvbbuEGJkii5Mbw07EU1ptQqfnzYBA/view?usp=drive_link" target="_blank" class="text-red-400 text-xs font-mono hover:underline flex items-center gap-1 group-hover:text-white transition-colors"><i class="fas fa-external-link-alt"></i> Lihat Sertifikat -></a>
+                    </div>
+                </div>
+
+                <!-- Cert 3: Dicoding (2024) -->
+                <div class="tech-card p-6 border-t-2 border-t-yellow-400 flex flex-col group" data-aos="fade-up" data-aos-delay="200">
+                    <p class="font-mono text-tech-text text-xs mb-2">2024</p>
+                    <h3 class="text-lg font-bold text-white mb-2">Dicoding Academy: Web & JavaScript</h3>
+                    <p class="text-tech-text text-sm mb-4 flex-grow">Lulus program "Belajar Membuat Front-End Web untuk Pemula", "Belajar Dasar Pemrograman JavaScript", dan "Belajar Dasar Pemrograman Web".</p>
+                    <div class="mt-4 pt-4 border-t border-tech-border">
+                        <a href="https://drive.google.com/file/d/1Vj3NyV1Jejie6SU639cClcQVwo6oiVGQ/view?usp=drive_link" target="_blank" class="text-yellow-400 text-xs font-mono hover:underline flex items-center gap-1 group-hover:text-white transition-colors"><i class="fas fa-external-link-alt"></i> Lihat Sertifikat -></a>
+                    </div>
+                </div>
+
+                <!-- Cert 4: CCNA (2024) (Tanpa Link Sesuai Permintaan) -->
+                <div class="tech-card p-6 border-t-2 border-t-tech-green flex flex-col" data-aos="fade-up">
+                    <p class="font-mono text-tech-text text-xs mb-2">2024</p>
+                    <h3 class="text-lg font-bold text-white mb-2">Cisco Certified Network Associate (CCNA)</h3>
+                    <p class="text-tech-text text-sm mb-4 flex-grow">Sertifikasi Profesional Industri kompetensi teknis standar IT, meliputi konfigurasi jaringan komputer, routing, dan switching.</p>
+                </div>
+
+                <!-- Cert 5: PKM Pendanaan (2024) -->
+                <div class="tech-card p-6 border-t-2 border-t-purple-500 flex flex-col group" data-aos="fade-up" data-aos-delay="100">
+                    <p class="font-mono text-tech-text text-xs mb-2">2024</p>
+                    <h3 class="text-lg font-bold text-white mb-2">Lolos Pendanaan PKM-PI</h3>
+                    <p class="text-tech-text text-sm mb-4 flex-grow">Inovasi: "AutoFish Ultrasonic Berbasis Android Sebagai Pendeteksi Pakan Ikan Otomatis, Kejernihan Air, Ketepatan Panen Budidamber Putra Putri Lele".</p>
+                    <div class="mt-4 pt-4 border-t border-tech-border">
+                        <a href="https://drive.google.com/file/d/1Qzamz3KM_Sz6L-SMuHdB3WNcSUepnjTk/view?usp=drive_link" target="_blank" class="text-purple-400 text-xs font-mono hover:underline flex items-center gap-1 group-hover:text-white transition-colors"><i class="fas fa-external-link-alt"></i> Lihat Sertifikat -></a>
+                    </div>
+                </div>
+
+                <!-- Cert 6: Pemakalah SEMBADHA (2024) -->
+                <div class="tech-card p-6 border-t-2 border-t-blue-500 flex flex-col group" data-aos="fade-up" data-aos-delay="200">
+                    <p class="font-mono text-tech-text text-xs mb-2">2024</p>
+                    <h3 class="text-lg font-bold text-white mb-2">Pemakalah Seminar SEMBADHA</h3>
+                    <p class="text-tech-text text-sm mb-4 flex-grow">Sertifikat presentasi paper: "Peningkatan Kualitas Produk dan Dampak Pencemaran Limbah Budidaya Ikan ... Menggunakan AutoFish Berbasis Android".</p>
+                    <div class="mt-4 pt-4 border-t border-tech-border">
+                        <a href="https://drive.google.com/file/d/1Vj3NyV1Jejie6SU639cClcQVwo6oiVGQ/view?usp=drive_link" target="_blank" class="text-blue-400 text-xs font-mono hover:underline flex items-center gap-1 group-hover:text-white transition-colors"><i class="fas fa-external-link-alt"></i> Lihat Sertifikat -></a>
+                    </div>
+                </div>
+
+                <!-- Cert 7: Ujian Kompetensi Jaringan (2021) -->
+                <div class="tech-card p-6 border-t-2 border-t-tech-cyan flex flex-col group" data-aos="fade-up">
+                    <p class="font-mono text-tech-text text-xs mb-2">2021</p>
+                    <h3 class="text-lg font-bold text-white mb-2">Ujian Kompetensi Jaringan Komputer</h3>
+                    <p class="text-tech-text text-sm mb-4 flex-grow">Membuat desain jaringan LAN/WAN/WLAN, instalasi & konfigurasi TCP/IP dinamis & statis, konfigurasi firewall pada router, pengujian hotspot, serta bloking akses/file.</p>
+                    <div class="mt-4 pt-4 border-t border-tech-border">
+                        <a href="https://drive.google.com/file/d/1r-m9EqcDTlfflF1Sm_6oUT7ZEVlNRRKw/view?usp=drive_link" target="_blank" class="text-tech-cyan text-xs font-mono hover:underline flex items-center gap-1 group-hover:text-white transition-colors"><i class="fas fa-external-link-alt"></i> Lihat Sertifikat -></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION (UPDATED DENGAN FORMSPREE PLACEHOLDER) -->
+    <section id="contact" class="py-24 relative z-10 border-t border-tech-border">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <span class="font-mono text-tech-cyan text-sm block mb-2" data-aos="fade-right">// 05. Koneksi</span>
+            <h3 class="text-4xl font-bold text-white mb-12" data-aos="fade-right">
+                Ping <span class="text-glow-cyan">Me</span>
+            </h3>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="space-y-4" data-aos="fade-right" data-aos-delay="100">
+                    <div class="tech-card p-6 flex items-center gap-4">
+                        <i class="fas fa-map-marker-alt text-tech-cyan text-xl w-6 text-center"></i>
+                        <div>
+                            <p class="text-xs font-mono text-tech-text">LOCATION</p>
+                            <p class="text-white">Jalan Cilengkrang 1, Bandung, Indonesia</p>
+                        </div>
+                    </div>
+                    <div class="tech-card p-6 flex items-center gap-4">
+                        <i class="fas fa-envelope text-tech-cyan text-xl w-6 text-center"></i>
+                        <div>
+                            <p class="text-xs font-mono text-tech-text">EMAIL</p>
+                            <p class="text-white">rizkinuraini158@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-card p-8" data-aos="fade-left" data-aos-delay="200">
+                    <!-- ACTION DI BAWAH INI HARUS DIGANTI DENGAN LINK DARI FORMSPREE -->
+                    <form class="space-y-4" action="https://formspree.io/f/mvkzqyqv" method="POST">
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="text" name="first_name" placeholder="First Name" class="w-full bg-tech-bg border border-tech-border p-3 text-white focus:outline-none focus:border-tech-cyan font-mono text-sm" required>
+                            <input type="text" name="last_name" placeholder="Last Name" class="w-full bg-tech-bg border border-tech-border p-3 text-white focus:outline-none focus:border-tech-cyan font-mono text-sm">
+                        </div>
+                        <input type="email" name="email" placeholder="Email Address" class="w-full bg-tech-bg border border-tech-border p-3 text-white focus:outline-none focus:border-tech-cyan font-mono text-sm" required>
+                        <textarea name="message" rows="4" placeholder="Message..." class="w-full bg-tech-bg border border-tech-border p-3 text-white focus:outline-none focus:border-tech-cyan font-mono text-sm resize-none" required></textarea>
+                        
+                        <button type="submit" class="w-full bg-tech-cyan text-black font-bold font-mono py-3 hover:bg-white transition-colors">
+                            > EXECUTE_SEND
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-tech-border py-8 text-center bg-tech-bg">
+        <p class="text-sm font-mono text-tech-text">SYSTEM TERMINATED. &copy; 2026 Rizki Nuraini.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // SCRIPT TYPED.JS
+            new Typed('#typed-text', {
+                strings: ['"Web Developer"', '"Accounting System"', '"Network Engineer"', '"Accounting App"'],
+                typeSpeed: 50,
+                backSpeed: 30,
+                backDelay: 2000,
+                loop: true,
+                cursorChar: '_'
+            });
+
+            // SCRIPT FILTER PORTFOLIO
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectItems = document.querySelectorAll('.project-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update tampilan tombol aktif
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-tech-cyan', 'text-black');
+                        b.classList.add('tech-card', 'text-tech-text');
+                    });
+                    btn.classList.remove('tech-card', 'text-tech-text');
+                    btn.classList.add('bg-tech-cyan', 'text-black');
+
+                    // Filter Card Proyek
+                    const filterValue = btn.getAttribute('data-filter');
+                    projectItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'flex';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Scroll Animation
+            AOS.init({ once: true, offset: 50, duration: 800 });
+
+            // Navbar background on scroll
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) navbar.style.background = 'rgba(5, 5, 5, 0.95)';
+                else navbar.style.background = 'rgba(5, 5, 5, 0.8)';
+            });
+
+            // --- Floating Code Background Animation Script ---
+            const codeWords = [
+                '<div>', '</div>', 'console.log()', 'return true;', 'function()', 
+                '{...}', '<MYOB>', 'public function', 'SELECT * FROM', 'sudo apt-get',
+                'const data =', 'npm start', '=>', 'while(true)', 'catch(err)',
+                '<html>', '<?php', 'git push', 'SSH', 'TCP/IP'
+            ];
+            
+            const container = document.getElementById('code-bg');
+            const maxWords = 25;
+
+            function createFloatingWord() {
+                if(container.children.length > maxWords) return;
+
+                const el = document.createElement('div');
+                el.classList.add('code-word');
+                el.innerText = codeWords[Math.floor(Math.random() * codeWords.length)];
+                el.style.left = Math.random() * 95 + 'vw';
+                el.style.fontSize = (Math.random() * 0.8 + 0.7) + 'rem';
+                
+                const duration = Math.random() * 20 + 15;
+                el.style.animationDuration = duration + 's';
+                
+                setTimeout(() => {
+                    if (el.parentNode === container) {
+                        container.removeChild(el);
+                    }
+                }, duration * 1000);
+
+                container.appendChild(el);
+            }
+
+            for(let i=0; i<15; i++) {
+                setTimeout(createFloatingWord, Math.random() * 5000);
+            }
+
+            setInterval(createFloatingWord, 2000);
+        });
+    </script>
+</body>
+</html>
